@@ -3,7 +3,14 @@ body{
     display: grid;
     grid-template-columns: 3fr 1fr;
 }
+
+#info-1, #info-2, #info-3, #info-4 {
+    font-size: 4rem;
+}
+
 #shop{
+    background-color:rgb(255, 245, 231);
+    box-sizing: border-box;
     position: relative;
     font-size: 2rem;
 }
@@ -24,14 +31,31 @@ body{
     font-size:x-large;
 }
 
+#title-amount {
+    padding: 0 5px;
+    border: solid 2px rgb(227, 106, 0);
+    border-radius: 50%;
+    background-color: rgb(227, 106, 0);
+    color: white;
+    padding: 0 1rem;
+}
+
+#cancel {
+    margin-left: 1.5vw;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    color: gray;
+}
+
 #title{
     height: 10%;
+    margin-left: 1vw;
+    padding-top: 3vh;
+    font-size: 5rem;
 }
 #orders{
+    background-color: rgb(242, 242, 242);
     height: 80%;
-}
-#price-submit{
-    height: 10%;
 }
 
 #logo, #info{
@@ -39,7 +63,8 @@ body{
 }
 
 #cart{
-    width:75%;
+    width: 75%;
+    height: 10%;
     position: fixed;
     z-index: 1;
     display: flex;
@@ -47,7 +72,7 @@ body{
 }
 
 #info{
-    flex-grow: 9;
+    flex-grow: 8;
     display: grid;
     position: relative;
     grid-template-columns: repeat(3, 1fr);
@@ -59,7 +84,11 @@ body{
 }
 
 #logo{
-    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: 2;
     text-align: center;
     background-color: black;
     opacity: 0.8;
@@ -73,10 +102,59 @@ body{
     text-align: left;
 }
 
-#login-button{
+#login-button {
     border-radius: 5px;
-    margin-right: 5px;
+    margin-right: 10px;
+    padding: 15px 35px;
+
     background-color: darkorange;
+}
+
+#image{
+    width:6.5vw;
+    height:25vh;
+    transform: rotateX(3.142rad);
+}
+
+#logo-name{
+    position: absolute;
+    margin-top: 4vh;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: azure;
+    font-weight: bold;
+}
+
+#BBQ-div{
+    grid-column-start: 8;
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+#price-submit, #price{
+    font-size: 3rem;
+}
+
+#price-submit{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 10%;
+}
+
+#price{
+    grid-column-start: 2;
+    font-size: 4rem;
+}
+
+#submit{
+    background-color: rgb(255, 185, 55);
+    color: white;
+    font-size: 4rem;
+    border-radius: 15px;
+    letter-spacing: 2px;
+    margin: 0 2vw 1vh 2vw;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .header-info{
@@ -89,3 +167,147 @@ body{
 .col-sm-6-col-md-4{
     z-index: 0;
 }
+
+.container{
+    margin-top: 15%;
+}
+
+#header p{
+    font-size: 3rem;
+}
+
+#header{
+    text-align: center;
+    word-spacing: 8px;
+    margin-bottom: 1vw;
+}
+
+#footer{
+    background-color: rgb(242, 242, 242);
+    padding: 2vw;
+    text-align: center;
+}
+
+#footer p{
+    font-size: 4rem;
+}
+
+#pizza-types{
+    background-color: orange;
+    color: white;
+    border-radius: 50%;
+    padding: 0 1rem;
+}
+
+.filters{
+    display: inline;
+    color: orange;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.order-info{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    margin: 2rem 0 0 1vw;
+}
+
+.row{
+    background-color: rgb(255, 245, 231);
+}
+
+.col-1, .col-2, .col-3{
+    display: flex;
+}
+
+.col-2{
+    font-size: 3rem;
+}
+
+.col-3{
+    margin-top: 1vh;
+}
+
+.size-icon{
+    width: 15%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.diameter{
+    grid-column-start: 2;
+    margin-left: 0.4vw;
+}
+
+.weight-icon{
+    width: 13%;
+    grid-column-start: 4;
+    margin-left: 0.4vw;
+}
+
+.grams{
+    grid-column-start: 5;
+    margin-left: 0.4vw;
+}
+
+.order-name{
+    display: inherit;
+    color: orange;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    font-size: 5rem;
+}
+
+.minus, .plus, .delete {
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    font: 40%;
+}
+
+.minus, .plus, .amount 
+{
+    margin-left: 0.4vw;
+}
+
+.price{
+    grid-column-start: 1;
+    align-self: center;
+}
+
+.minus {
+    grid-column-start: 4;
+    background-color: red;
+    color: white;
+}
+
+.amount{
+    grid-column-start: 5;
+    text-align: center;
+    align-self: center;
+}
+
+.order-wrapper{
+    border-bottom: solid 3px rgb(170, 170, 170);
+    padding-bottom: 1vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.plus {
+    grid-column-start: 6;
+    background-color: green;
+    color: white;
+}
+  
+.delete {  
+    grid-column-start: 8;
+    background-color: white;
+    color: orange;
+    margin-left: 2vw;
+}
+

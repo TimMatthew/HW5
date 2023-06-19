@@ -10,7 +10,7 @@
     <!-- LESS основний файл -->
     <link rel="stylesheet/less" type="text/css" href="assets/less/main.less"/>
 
-    <link rel="stylesheet" href="C:\Users\п\Веб-технології\HW4\HW4\Frontend\www\styles\style.css">
+    <link rel="stylesheet" href="C:\Users\п\Веб-технології\HW4\Frontend\www\styles\style.css">
     <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
@@ -21,7 +21,8 @@
         <div id="cart">
         
             <div id="logo">
-                <img class="image" src="C:\Users\п\Веб-технології\HW4\HW4\Frontend\www\assets\images\home-icon.png" alt="Логотип сайту">
+                <img id="image" src="C:\Users\п\Веб-технології\HW4\Frontend\www\assets\images\discount.svg" alt="Логотип сайту">
+                <span id="logo-name">Pizza <br>KMA</span>
             </div>
     
             <div id="info">
@@ -45,6 +46,16 @@
         </div>
     
         <div class="container">
+
+            <div id="header">
+                <p>Усі піци <span id="pizza-types">8</span></p>
+                <a id="all" class="filters" href="#">Усі</a>
+                <a id="meat" class="filters" href="#">М'ясні</a>
+                <a id="pineapple" class="filters" href="#">З ананасом</a>
+                <a id="mushrooms" class="filters" href="#">З грибами</a>
+                <a id="seafood" class="filters" href="#">З морепродуктами</a>
+                <a id="vegan" class="filters" href="#">Веганські</a>
+            </div>
     
             <div class="row" id="pizza_list">
     
@@ -212,23 +223,105 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
-    
+
+        </div>
+        
+        <div id="footer">
+                    <p>Pizza.22 - практичний проект в межах курсу JavaScript в Києво-Могилянській академії.</p>
+                    <p>Доставка піци здійснюється</p>
         </div>
     </div>
         <div id="basket">
 
                 <div id="title">
                     Замовлення
+
+                    <span id="title-amount">3</span>
+                    <span id="cancel">Скасувати замовлення</span>
                 </div>
 
                 <div id="orders">
-                    ВВК
+
+                       <div class="order-wrapper">
+                            <div class="order-info">
+                                <div class="col-1">
+                                    <span class="order-name">BBQ (мала)</span>
+                                </div>
+                                <div class="col-2">
+                                    <img class="size-icon" src="C:\Users\п\Веб-технології\HW4\Frontend\www\assets\images\size-icon.svg" alt="Діаметр піци">
+                                    <span class="diameter">30</span>
+                                    <img class="weight-icon" src="C:\Users\п\Веб-технології\HW4\Frontend\www\assets\images\weight.svg" alt="Вага">
+                                    <span class="grams">400</span>
+                                </div>
+                                <div class="col-3">
+                                    <span class="price">459грн</span>
+                                    <button class="minus">-</button>
+                                    <span class="amount">2</span>
+                                    <button class="plus">+</button>
+                                    <button class="delete">x</button>
+                                </div>
+                            </div>
+                            <div id="BBQ-div">
+                                <img src="assets\images\pizza_2_half.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="order-wrapper">
+                            <div class="order-info">
+                                <div class="col-1">
+                                    <span class="order-name">BBQ (мала)</span>
+                                </div>
+                                <div class="col-2">
+                                    <img class="size-icon" src="C:\Users\п\Веб-технології\HW4\Frontend\www\assets\images\size-icon.svg" alt="Діаметр піци">
+                                    <span class="diameter">30</span>
+                                    <img class="weight-icon" src="C:\Users\п\Веб-технології\HW4\Frontend\www\assets\images\weight.svg" alt="Вага">
+                                    <span class="grams">400</span>
+                                </div>
+                                <div class="col-3">
+                                    <span class="price">459грн</span>
+                                    <button class="minus">-</button>
+                                    <span class="amount">2</span>
+                                    <button class="plus">+</button>
+                                    <button class="delete">x</button>
+                                </div>
+                            </div>
+                            <div id="BBQ-div">
+                                <img src="assets\images\pizza_2_half.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="order-wrapper">
+                            <div class="order-info">
+                                <div class="col-1">
+                                    <span class="order-name">BBQ (мала)</span>
+                                </div>
+                                <div class="col-2">
+                                    <img class="size-icon" src="C:\Users\п\Веб-технології\HW4\Frontend\www\assets\images\size-icon.svg" alt="Діаметр піци">
+                                    <span class="diameter">30</span>
+                                    <img class="weight-icon" src="C:\Users\п\Веб-технології\HW4\Frontend\www\assets\images\weight.svg" alt="Вага">
+                                    <span class="grams">400</span>
+                                </div>
+                                <div class="col-3">
+                                    <span class="price">459грн</span>
+                                    <button class="minus">-</button>
+                                    <span class="amount">2</span>
+                                    <button class="plus">+</button>
+                                    <button class="delete">x</button>
+                                </div>
+                            </div>
+                            <div id="BBQ-div">
+                                <img src="assets\images\pizza_2_half.jpg" alt="">
+                            </div>
+                        </div>
+             
                 </div>
 
                 <div id="price-submit">
-                    Сума
+                    <span id="price-title">Сума замовлення</span>
+                    <span id="price">924 грн</span>
+                    <button id="submit">Замовити</button>
                 </div>
         </div>
     
