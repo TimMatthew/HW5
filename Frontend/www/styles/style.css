@@ -114,8 +114,8 @@ body{
 }
 
 #image{
-    width:6.5vw;
-    height:25vh;
+    width: 160px;
+    height: 480px;
     transform: rotateX(3.142rad);
 }
 
@@ -140,7 +140,7 @@ body{
 
 #price{
     grid-column-start: 2;
-    font-size: 4rem;
+    font-size: 6rem;
     text-align: right;
     margin-right: 1vw;
 }
@@ -164,20 +164,16 @@ body{
     grid-row-end: 5;
 }
 
-.pizza-img{
-    position: fixed;
-    margin-right: 10px;
-}
 
 .image-container {
     position: relative;
-    overflow: hidden; /* This will prevent the pizza-img from overflowing into the orders div */
 }
 
 .pizza-img {
     position: absolute;
     right: -50%; /* Moves the image half-way outside of its parent container */
-    width: 100%; /* Adjust based on your requirements */
+    width: 80%; /* Adjust based on your requirements */
+    height: 100%;
 }
 
 .svg-container {
@@ -188,13 +184,13 @@ body{
 }
 
 .svg-image {
-    width: 8.5vw;
-    height: 36vh;
+    width: 270px;
+    height: 700px;
 }
 
 .letter {
     position: absolute;
-    margin-top: 21vh;
+    margin-top: 22vh;
     font-size: 3.5rem;
     letter-spacing: 3px;
     color: azure;
@@ -306,7 +302,7 @@ body{
     color: orange;
     grid-column-start: 1;
     grid-column-end: 5;
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .minus, .plus, .delete {
@@ -324,6 +320,7 @@ body{
 }
 
 .price{
+    font-size: 3rem;
     grid-column-start: 1;
     align-self: center;
 }
@@ -336,6 +333,7 @@ body{
 
 .amount{
     grid-column-start: 5;
+    font-size: 3rem;
     text-align: center;
     align-self: center;
 }
