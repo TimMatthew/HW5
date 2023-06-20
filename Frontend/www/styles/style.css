@@ -57,6 +57,8 @@ body{
 #orders{
     background-color: rgb(242, 242, 242);
     height: 80%;
+    overflow-y: auto;
+    overflow-x: clip;
 }
 
 #logo, #info{
@@ -126,12 +128,6 @@ body{
     font-weight: bold;
 }
 
-#BBQ-div{
-    grid-column-start: 8;
-    grid-row-start: 1;
-    grid-row-end: 5;
-}
-
 #price-submit, #price{
     font-size: 3rem;
 }
@@ -149,7 +145,6 @@ body{
     margin-right: 1vw;
 }
 
-
 #submit{
     background-color: rgb(255, 185, 55);
     color: white;
@@ -163,25 +158,49 @@ body{
     font-family: revert;
 }
 
+.pizza-div{
+    grid-column-start: 8;
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+.pizza-img{
+    position: fixed;
+    margin-right: 10px;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden; /* This will prevent the pizza-img from overflowing into the orders div */
+}
+
+.pizza-img {
+    position: absolute;
+    right: -50%; /* Moves the image half-way outside of its parent container */
+    width: 100%; /* Adjust based on your requirements */
+}
+
 .svg-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    left: 5%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
 }
 
 .svg-image {
-    width: 100px;
-    height: 100px;
+    width: 8.5vw;
+    height: 36vh;
 }
 
 .letter {
-    margin-left: 10px;
+    position: absolute;
+    margin-top: 21vh;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: azure;
+    text-align: center;
+    font-weight: bold;
 }
-
-/* #discount-image{
-    width:6.5vw;
-    height:25vh;
-} */
 
 .header-info{
     padding-right: 10px;
@@ -212,10 +231,13 @@ body{
     background-color: rgb(242, 242, 242);
     padding: 2vw;
     text-align: center;
+    position: relative;
+    z-index: 0;
 }
 
 #footer p{
     font-size: 4rem;
+    padding: 0 15vw;
 }
 
 #pizza-types{
@@ -258,7 +280,7 @@ body{
 }
 
 .size-icon{
-    width: 50px;
+    width: 40px;
     grid-column-start: 1;
     grid-column-end: 3;
 }
