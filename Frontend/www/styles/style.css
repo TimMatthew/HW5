@@ -163,6 +163,26 @@ body{
     font-family: revert;
 }
 
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-image {
+    width: 100px;
+    height: 100px;
+}
+
+.letter {
+    margin-left: 10px;
+}
+
+/* #discount-image{
+    width:6.5vw;
+    height:25vh;
+} */
+
 .header-info{
     padding-right: 10px;
     text-align: center;
