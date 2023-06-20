@@ -45,6 +45,7 @@ body{
     font-size: 2.2rem;
     letter-spacing: 2px;
     color: gray;
+    display: inline-block;
 }
 
 #title{
@@ -144,17 +145,22 @@ body{
 #price{
     grid-column-start: 2;
     font-size: 4rem;
+    text-align: right;
+    margin-right: 1vw;
 }
+
 
 #submit{
     background-color: rgb(255, 185, 55);
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
     border-radius: 15px;
-    letter-spacing: 2px;
     margin: 0 2vw 1vh 2vw;
     grid-column-start: 1;
     grid-column-end: 3;
+    border: none;
+    box-shadow: 1px 8px 19px #8d5b00;
+    font-family: revert;
 }
 
 .header-info{
@@ -232,7 +238,7 @@ body{
 }
 
 .size-icon{
-    width: 15%;
+    width: 50px;
     grid-column-start: 1;
     grid-column-end: 3;
 }
@@ -243,7 +249,7 @@ body{
 }
 
 .weight-icon{
-    width: 13%;
+    width: 40px;
     grid-column-start: 4;
     margin-left: 0.4vw;
 }
@@ -265,7 +271,9 @@ body{
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
-    font: 40%;
+    border: none;
+    box-shadow: 1px 1px 6px #5a5a5a;
+    text-shadow: white 0px -14px 9px;
 }
 
 .minus, .plus, .amount 
