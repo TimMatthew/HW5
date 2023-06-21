@@ -1,3 +1,95 @@
-@media screen {
-    
+@media (max-width:1820px){
+    .order-info{
+        width: 250px;
+    }
+    .col-2, .price, .amount{
+        font-size: 2rem;
+    }
+    .pizza-img{
+        width:90%;
+    }
+    #basket{
+        width: 30%;
+    }
+    #cart{
+        width: 70%;
+    }
+}
+
+@media (max-width: 1640px){
+    #info-1, #info-2, #info-3, #info-4 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 1608px){
+    .container{
+        width:80%;
+    }
+}
+
+@media (max-width: 1440px){
+    #cart, #title{
+        height: 130px
+    }
+}
+
+@media (max-width: 1312px){
+    #cart{
+        width: 65%;
+    }
+
+    #basket{
+        width: 35%;
+    }
+
+    .order-info{
+        width: 270px;
+    }
+
+    .pizza-img{
+        width:100%;
+    }
+
+    .container{
+        width:70%;
+        font-size: 14px;
+    }
+
+    #small{
+        width: 45%;
+        margin-right: 5%;
+    }
+
+    #big{
+        width: 45%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 1160px){
+    .btn{
+        padding: 6px 4px;
+    }
+    #info-1, #info-2, #info-3, #info-4 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 990px){
+    #info-3{
+        display: none;
+    }
+}
+
+@media (max-width: 844px){
+    #info-2{
+        display: none;
+    }
+    #login-button{
+        padding: 0px 35px;
+        border-radius: 5px;
+        margin-left: 14vw;
+        background-color: darkorange;
+    }
 }
