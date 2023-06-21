@@ -9,10 +9,10 @@
         width:90%;
     }
     #basket{
-        width: 30%;
+        width: 25%;
     }
     #cart{
-        width: 70%;
+        width: 75%;
     }
 }
 
@@ -25,6 +25,13 @@
 @media (max-width: 1608px){
     .container{
         width:80%;
+    }
+    #footer p{
+        font-size: 2.5rem;
+    }
+    .svg-container{
+        height: 580px;
+        width: 190px;
     }
 }
 
@@ -67,6 +74,22 @@
     }
 }
 
+@media (max-width: 1287px){
+    #footer p{
+        margin-top: 1%;
+    }
+    .svg-container{
+        height: 480px;
+        width: 140px;
+    }
+    .percent{
+        margin-top: 400px;
+    }
+    .letter, .percent{
+        font-size: 2.5rem;
+    }
+}
+
 @media (max-width: 1232px){
     .container{
         margin-top: 25%;
@@ -88,6 +111,16 @@
 @media (max-width: 990px){
     #info-3{
         display: none;
+    }
+}
+
+@media (max-width: 930px){
+    #footer p{
+        font-size: 2rem;
+        padding: 0 20vw;
+    }
+    p{
+        margin: 0 0 10px;
     }
 }
 
@@ -119,14 +152,176 @@
     }
 }
 
+@media (max-width: 980px){
+    .order-name{
+        font-size: 2rem;
+    }
+    .col-2, .price, .amount {
+        font-size: 1.5rem;
+    }
+    .minus, .plus, .delete{
+        width: 3rem;
+        height: 3rem;
+    }
+    .pizza-img{
+        width: 200%;
+    }
+}
+
 @media (max-width: 844px){
     #info-2{
         display: none;
     }
     #login-button{
-        padding: 0px 35px;
         border-radius: 5px;
-        margin-left: 14vw;
+        margin-left: 8vw;
         background-color: darkorange;
+    }
+}
+
+@media (max-width: 816px){
+    .filters{
+        font-size: 2.5rem;
+    }
+}
+
+@media(max-width: 793px){
+    #info{
+        display: flex;
+        flex-wrap: wrap;
+        height: 150px;
+    }
+    #logo{
+        height:150px;
+    }
+    #title{
+        height: 150px;
+    }
+    #info-1{
+        width: 40%;
+    }
+    #info-4{
+        width: 100%;
+    }
+    #image{
+        width: 100px;
+        height: 340px;
+        transform: rotateX(3.142rad);
+    }
+    #logo-name{
+        position: absolute;
+        margin-top: 3vh;
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+        color: azure;
+        font-weight: bold;
+    }
+
+    @media(max-width: 620px){
+        #title-name{
+            font-size: 1.6em;
+        }
+        #title-amount{
+            font-size: 1.5em;
+            padding: 0px 0.5rem;
+        }
+        #cancel{
+            margin-left: 0px;
+        }
+    }
+
+    @media (max-width: 780px) {
+        #price-submit, #price{
+            font-size: 2.1rem;
+        }
+        .container{
+            margin-top: 45%;
+        }
+        .order-info{
+            width: 240px;
+        }
+        .pizza-img{
+            width: 240%;
+            right: -140%;
+        }
+    }
+
+    @media (max-width: 692px){
+        #footer p{
+            font-size: 1.5rem;
+            padding: 0 20vw;
+            margin-top: 1%;
+        }
+        p{
+            margin: 0 0 10px;
+        }
+        .svg-container{
+            height: 370px;
+            width: 110px;
+        }
+        .letter, .percent{
+            font-size: 1.6rem;
+        }
+
+        .letter{
+            margin-top: 140px;
+        }
+
+        .percent{
+            margin-top: 250px;
+        }
+    }
+
+    @media (max-width: 640px) {
+
+        .pizza-img{
+            width: 260%;
+            right: -140%;
+        }
+
+        .order-info {
+            width: 190px;
+        }
+    }
+
+    @media (max-width: 504px) {
+
+        .pizza-img{
+            width: 300%;
+            right: -210%;
+        }
+
+        .order-info {
+            width: 130px;
+        }
+    }
+
+    @media (max-width: 504px) {
+
+        .pizza-img{
+            width: 300%;
+            right: -210%;
+        }
+
+        .order-info {
+            width: 130px;
+        }
+
+        #info, #title{
+            height:190px;
+        }
+
+        .container{
+            margin-top: 60%;
+        }
+    }
+
+    @media (max-width: 447px) {
+        #login-button{
+            font-size: 18px;
+        }
+        #info-1{
+            font-size: 1.9rem;
+        }
     }
 }
