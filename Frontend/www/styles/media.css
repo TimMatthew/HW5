@@ -67,6 +67,12 @@
     }
 }
 
+@media (max-width: 1232px){
+    .container{
+        margin-top: 25%;
+    }
+}
+
 @media (max-width: 1160px){
     .btn{
         padding: 6px 4px;
@@ -74,11 +80,42 @@
     #info-1, #info-2, #info-3, #info-4 {
         font-size: 2.5rem;
     }
+    .pizza-img{
+        width: 150%;
+    }
 }
 
 @media (max-width: 990px){
     #info-3{
         display: none;
+    }
+}
+
+@media (max-width: 950px){
+    .pizza-img{
+        width: 160%;
+    }
+}
+
+@media (max-width: 920px){
+    #cart{
+        width: 60%;
+    }
+    #basket{
+        width: 40%;
+    }
+    .pizza-img{
+        width: 170%;
+    }
+
+    .container{
+        width: 60%;
+    }
+}
+
+@media (max-width: 1116px){
+    #price-submit, #price {
+        font-size: 2.5rem;
     }
 }
 
