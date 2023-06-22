@@ -288,6 +288,25 @@
         }
     }
 
+    @media (max-width: 620px) {
+
+        #info-1{
+            border-bottom: solid 2px azure;
+            width: 90%;
+        }
+        #info-4{
+            display: none;
+        }
+        #login-button{
+            border-top: solid 2px azure;
+            margin: 0% 0%;
+            width: 40%;
+            border-radius: 0px;
+            margin-left: 0vw;
+        }
+        
+    }
+
     @media (max-width: 504px) {
 
         .pizza-img{
