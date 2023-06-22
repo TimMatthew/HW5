@@ -374,6 +374,12 @@ body{
     align-self: center;
 }
 
+.btn-primary{
+    color: #fff;
+    background-color: #fdac32;
+    border-color: #080a0c;
+}
+
 .order-wrapper{
     border-bottom: solid 3px rgb(170, 170, 170);
     padding-bottom: 1vh;
