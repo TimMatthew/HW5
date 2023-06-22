@@ -194,7 +194,7 @@ body{
     height: 100%;
 }
 
-.svg-container {
+.discount-container {
     left: 2%;
     position: fixed;
     bottom: 0;
@@ -207,7 +207,7 @@ body{
     width: 270px;
 }
 
-.svg-image {
+.discount-image {
     width: 100%;  
     height: 100%;  
 }
@@ -376,6 +376,12 @@ body{
 }
 
 .btn-primary{
+    color: #fff;
+    background-color: #fdac32;
+    border-color: #080a0c;
+}
+
+.btn-default{
     color: #fff;
     background-color: #fdac32;
     border-color: #080a0c;
