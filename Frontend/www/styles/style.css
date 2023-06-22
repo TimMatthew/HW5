@@ -353,6 +353,7 @@ body{
 .minus, .plus, .amount 
 {
     margin-left: 0.4vw;
+    font-size: 2rem;
 }
 
 .price{
