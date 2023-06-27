@@ -1,20 +1,14 @@
-body{
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-}
-
 #info-1, #info-2, #info-3, #info-4 {
     font-size: 3.5rem;
 }
 
 #shop{
+    display: inline-block;
+    width: calc(100% - 500px);
     background-color:rgb(255, 245, 231);
     box-sizing: border-box;
     position: relative;
-    font-size: 2rem;
 }
-
 
 #pizza-info{
     display: flex;
@@ -39,8 +33,9 @@ body{
     display: flex;
     flex-direction: column;
     box-shadow: 5px 5px 15px 5px #5a5a5a;
+    width: 500px;
     height: 100%;
-    width: 25%;
+    top: 0;
 }
 
 #title, #orders, #price-submit{
@@ -62,7 +57,7 @@ body{
 
 #cancel {
     margin-left: 1.5vw;
-    font-size: 16px;
+    font-size: 2rem;
     letter-spacing: 2px;
     color: gray;
     display: inline-block;
@@ -70,7 +65,7 @@ body{
 
 #title{
     background-color: white;
-    height: 10%;
+    height: 8%;
     padding-left: 1vw;
     padding-top: 3vh;
     font-size: 16px;
@@ -78,8 +73,6 @@ body{
 #orders{
     background-color: rgb(242, 242, 242);
     height: 80%;
-    overflow-y: auto;
-    overflow-x: clip;
 }
 
 #logo, #info{
@@ -87,8 +80,8 @@ body{
 }
 
 #cart{
-    width: 75%;
-    height: 120px;
+    width: calc(100% - 500px);
+    height: 8%;
     position: fixed;
     z-index: 1;
     display: flex;
@@ -160,7 +153,11 @@ body{
 #price{
     grid-column-start: 2;
     text-align: right;
-    margin-right: 1vw;
+    margin-right: 20px;
+}
+
+#catalog{
+    display: flex;
 }
 
 #submit{
@@ -168,85 +165,12 @@ body{
     color: white;
     font-size: 3rem;
     border-radius: 15px;
-    margin: 0 2vw 1vh 2vw;
+    margin: 0 90px 1vh 90px;
     grid-column-start: 1;
     grid-column-end: 3;
     border: none;
     box-shadow: 1px 8px 19px #8d5b00;
     font-family: revert;
-}
-
-.pizza-div{
-    grid-column-start: 8;
-    grid-row-start: 1;
-    grid-row-end: 5;
-}
-
-
-.image-container {
-    position: relative;
-}
-
-.pizza-img {
-    position: absolute;
-    right: -50%; 
-    width: 80%; 
-    height: 100%;
-}
-
-.discount-container {
-    left: 2%;
-    position: fixed;
-    bottom: 0;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 700px;
-    width: 270px;
-}
-
-.discount-image {
-    width: 100%;  
-    height: 100%;  
-}
-
-.letter{
-    display: flex;
-    align-items: baseline;
-    border-bottom: solid 2px darkorange;
-}
-
-.letter, .percent {
-    position: absolute;
-    margin-top: 200px;
-    font-size: 3.5rem;
-    letter-spacing: 3px;
-    color: azure;
-    text-align: center;
-    font-weight: bold;
-   
-}
-
-.percent{
-    margin-top: 450px;
-    text-align: center;
-}
-
-.header-info{
-    padding-right: 10px;
-    text-align: center;
-    color: azure;
-    font-size:x-large;
-}
-
-.col-sm-6-col-md-4{
-    z-index: 0;
-}
-
-.container{
-    margin-top: 15%;
 }
 
 #header p{
@@ -292,18 +216,19 @@ body{
     grid-column: 1;
     grid-template-rows: auto;
     grid-template-columns: auto;
-    margin: 2rem 0 0 1vw;
+    padding: 2rem 0 0 1vw;
 }
 
 .row{
     background-color: rgb(255, 245, 231);
+    display: grid;
+    align-items: center;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .col-1, .col-2, .col-3{
     display: flex;
-}
-
-.col-2{
     font-size: 3rem;
 }
 
@@ -352,12 +277,15 @@ body{
 
 .minus, .plus, .amount 
 {
-    margin-left: 0.4vw;
+    margin-left: 5px;
+    
+}
+
+.minus, .plus{
     font-size: 2rem;
 }
 
 .price{
-    font-size: 3rem;
     grid-column-start: 1;
     align-self: center;
 }
@@ -370,7 +298,6 @@ body{
 
 .amount{
     grid-column-start: 5;
-    font-size: 3rem;
     text-align: center;
     align-self: center;
 }
@@ -389,8 +316,8 @@ body{
 
 .order-wrapper{
     border-bottom: solid 3px rgb(170, 170, 170);
-    padding-bottom: 1vh;
     position: relative;
+    padding-bottom: 60px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -401,10 +328,86 @@ body{
     color: white;
 }
   
-.delete {  
+.delete {
     grid-column-start: 8;
     background-color: white;
     color: orange;
-    margin-left: 2vw;
+    margin-left: 20px;
 }
 
+.pizza-div{
+    grid-column-start: 8;
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+.pizza-img {
+    position: absolute;
+    right: -40%;
+    width: 70%;
+    height: 100%;
+}
+
+.discount-container {
+    left: 2%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 700px;
+    width: 270px;
+}
+
+.discount-image {
+    width: 100%;  
+    height: 100%;  
+}
+
+.letter{
+    display: flex;
+    align-items: baseline;
+    border-bottom: solid 2px darkorange;
+}
+
+.letter, .percent {
+    position: absolute;
+    margin-top: 200px;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: azure;
+    text-align: center;
+    font-weight: bold;
+}
+
+.catalog{
+    display: flex;
+    justify-content: center;
+}
+
+.row::before{
+    display: none;
+}
+
+.percent{
+    margin-top: 450px;
+    text-align: center;
+}
+
+.header-info{
+    padding-right: 10px;
+    text-align: center;
+    color: azure;
+    font-size:x-large;
+}
+
+.col-sm-6{
+    z-index: 0;
+    width: 100%;
+}
+
+.container{
+    margin-top: 15%;
+}
