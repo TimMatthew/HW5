@@ -54,8 +54,21 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
 
     let divCol6 = document.createElement("div");
     divCol6.setAttribute("class", "col-sm-6 col-md-4");
+    
     let divThumb = document.createElement("div");
     divThumb.setAttribute("class", "thumbnail pizza-card");
+    
     let pizzaImg = document.createElement("img");
     pizzaImg.setAttribute("src", icon);
+
+    let caption = document.createElement("div");
+    caption.setAttribute("class", "caption");
+    
+    let h3 = document.createElement("h3");
+    h3.innerText = title;
+    
+    let pizzaType = document.createElement("p");
+    pizzaType.setAttribute("class", "pizza-type");
+    pizzaType.innerText = type;
+
 }

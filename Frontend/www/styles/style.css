@@ -10,17 +10,18 @@
     position: relative;
 }
 
-#pizza-info{
+.pizza-info{
     display: flex;
     box-sizing: border-box;
 }
 
-#small{
+.small{
     width: 40%;
     margin-right: 10%;
+    font-size: 14px;
 }
 
-#big{
+.big{
     width: 40%;
     margin-left: 10%;
 }
