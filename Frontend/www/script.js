@@ -239,9 +239,35 @@ function filterMenu(event){
 }
 
 function updatePanels(filter){
-    for(let pizza of pizzaCollection) {
-       
-        let title = pizza.title;
+
+        if(filter == "mushrooms"){
+            for(let pizza of pizzaCollection){
+                if(pizza.content.hasOwnProperty("mushroom")){
+                    setPizzaPanelInfo(pizza);
+                }
+            }
+        }
+        else if(filter == "pineapple"){
+            for(let pizza of pizzaCollection){
+                if(pizza.content.hasOwnProperty("pineapple")){
+                    setPizzaPanelInfo(pizza);
+                }
+            }
+        }
+        else if(filter == "all"){
+            initializeMenu();
+        }
+        else{
+            for(let pizza of pizzaCollection){
+                if(filter == pizza.type){
+                    setPizzaPanelInfo(pizza);
+                }
+            }
+        }
+}
+
+function setPizzaPanelInfo(pizza){
+    let title = pizza.title;
         let type = pizza.type;
         let icon = pizza.icon;
 
@@ -283,5 +309,4 @@ function updatePanels(filter){
         
         createPizzaPanel(title, type, icon, content, smallWeight, smallSize, 
             smallPrice, bigWeight, bigSize, bigPrice, isNew, isPopular);
-    }
 }
