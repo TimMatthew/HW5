@@ -17,7 +17,7 @@ function initializeMenu(){
             smallSize = pizza.small_size.size;
             smallPrice = pizza.small_size.price;
          }
-
+         
         if(pizza.hasOwnProperty("big_size")){
             bigWeight = pizza.big_size.weight;
             bigSize = pizza.big_size.size;
@@ -88,7 +88,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                 
                 <h3>${title}</h3>
                 
-                <p>
+                <p class="pizza-type">
                     ${type}
                 </p>
 
@@ -146,7 +146,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                 
                 <h3>${title}</h3>
                 
-                <p>
+                <p class="pizza-type">
                     ${type}
                 </p>
 
@@ -185,7 +185,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                 
                 <h3>${title}</h3>
                 
-                <p>
+                <p class="pizza-type">
                     ${type}
                 </p>
 
