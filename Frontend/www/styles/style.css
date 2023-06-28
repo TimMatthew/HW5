@@ -2,6 +2,11 @@
     font-size: 3.5rem;
 }
 
+h3{
+    color: #000000 !important; /* Стоїть important, тому що фа*/
+    background-color: #fff !important;
+}
+
 #shop{
     display: inline-block;
     width: calc(100% - 500px);
@@ -24,6 +29,10 @@
 .big{
     width: 40%;
     margin-left: 10%;
+}
+
+.description{
+    word-wrap: break-word;
 }
 
 #basket{
