@@ -294,7 +294,7 @@ function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
     });
 
     deleteButton.addEventListener("click", function() {
-        // ordersArray.pop(ordersDiv);
+        ordersArray.pop(ordersDiv);
         removeOrder(orderDiv);
     });
 
