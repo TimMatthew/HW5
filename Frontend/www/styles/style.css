@@ -3,8 +3,8 @@
 }
 
 h3{
-    color: #000000 !important; /* Стоїть important, тому що фа*/
-    background-color: #fff !important;
+    color: #000000 !important; /* Стоїть important, тому що style перебиває ці стилі в будь-якому випадку */
+    background-color: #fff !important; /* Аналогічно */
 }
 
 #shop{
