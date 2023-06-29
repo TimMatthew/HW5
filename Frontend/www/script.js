@@ -1,7 +1,7 @@
 import pizzaCollection from './pizzaCollection.json' assert {type: "json"};
 
 // (!!!) - ПРИКРІПИТИ LOCAL STORAGE
-// (!!!) - ПОРІШАТИ З РОЗМІРАМИ МЕНЮ
+// (?) - ПОРІШАТИ З РОЗМІРАМИ МЕНЮ
 initializeSite();
 
 // Налаштовує стартові умови сторінки. Задає дані про піци в меню, 
@@ -12,6 +12,8 @@ function initializeSite(){
     clearOrders.addEventListener("click", function(){
         let ordersPanel = document.querySelector("#orders");
         ordersPanel.innerHTML = '';
+        let totalPrice = document.querySelector("#price").innerHTML.replace("грн", "");
+        updateTotal(totalPrice, true);
     });
 
     for(let pizza of pizzaCollection) {
@@ -145,6 +147,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                 </div>
             </div>
         </div>`;
+        console.log(parentElement.outerHTML);
 
         divCol6.querySelector("#smallButton").replaceWith(smallButton);
         divCol6.querySelector("#bigButton").replaceWith(bigButton);
