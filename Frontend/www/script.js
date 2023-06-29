@@ -1,13 +1,18 @@
 import pizzaCollection from './pizzaCollection.json' assert {type: "json"};
 
-// (!!!) - ПРОХЕНДЛИТИ ВІД'ЄМНІ ЗНАЧЕННЯ
 // (!!!) - ПРИКРІПИТИ LOCAL STORAGE
-// (!!!) - ОЧИЩАТИ КОШИК
 // (!!!) - ОНОВЛЮВАТИ ЗАГАЛЬНУ СУМУ
-initializeMenu();
+initializeSite();
 
-// Задає дані про пци в меню
-function initializeMenu(){
+// Налаштовує стартові умови сторінки. Задає дані про піци в меню, 
+// додає події до 'очистити замовлення', 'замовити'
+function initializeSite(){
+
+    let clearOrders = document.querySelector('#cancel');
+    clearOrders.addEventListener("click", function(){
+        let ordersPanel = document.querySelector("#orders");
+        ordersPanel.innerHTML = '';
+    });
 
     for(let pizza of pizzaCollection) {
        
@@ -107,7 +112,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                     <div class="small">
                         <div class="small-info">
                             <div>
-                                <img src="assets\images\size-icon.svg" alt="">
+                                <img src="assets/images/size-icon.svg" alt="">
                                 <span class="small-size">${smallSize}</span>
                             </div>
                             <div>
@@ -124,7 +129,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                     <div class="big">
                         <div class="big-info">
                             <div>
-                                <img src="assets\images\size-icon.svg" alt="">
+                                <img src="assets/images/size-icon.svg" alt="">
                                 <span class="big-size">${bigSize}</span>
                             </div>
                             <div>
@@ -228,7 +233,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
 
 
 //Створює панель замовлення та ставить в сторінку
-function createOrderPanel(name, image, size, weight, price, pricePerOne, weightPerOne){
+function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
 
     let orderDiv = document.createElement("div");
     orderDiv.className = "order-wrapper";
@@ -241,7 +246,7 @@ function createOrderPanel(name, image, size, weight, price, pricePerOne, weightP
     let minus = document.createElement("button");
     minus.className = "minus";
     minus.innerText = '-';
-    // minus.style.display = 'none';
+    minus.style.display = 'none';
 
     let deleteButton = document.createElement("button");
     deleteButton.className = "delete";
@@ -255,10 +260,11 @@ function createOrderPanel(name, image, size, weight, price, pricePerOne, weightP
             <img class="size-icon" src="assets\\images\\size-icon.svg" alt="Діаметр піци">
             <span class="diameter">${size}</span>
             <img class="weight-icon" src="assets\\images\\weight.svg" alt="Вага">
-            <span class="grams">${weight}</span>
+            <span class="grams">${weightPerOne}</span>
         </div>
         <div class="col-3">
-            <span class="price">${price}</span>
+            <span class="price">${pricePerOne}</span>
+            <span class="price-icon">₴</span>
             <button class="minus">-</button>
             <span class="amount">1</span>
             <button class="plus">+</button>
@@ -284,33 +290,53 @@ function createOrderPanel(name, image, size, weight, price, pricePerOne, weightP
     });
 
     let ordersDiv = document.querySelector('#orders');
-    ordersDiv.appendChild(orderDiv, );
+    ordersDiv.appendChild(orderDiv);
 }
 
 
 // Задає інфу про замовлення піци
 function orderPizza(e){
+
+    let clickedPizzaName, image, size, weightPer1, pricePer1;
+
     let button = e.target;
     let clickedPanel = button.parentElement.parentElement.parentElement.parentElement;
-    let image = clickedPanel.querySelector(".pizza-image").getAttribute("src");
+    image = clickedPanel.querySelector(".pizza-image").getAttribute("src");
 
-    let name, size, weight, price;
+    clickedPizzaName = clickedPanel.querySelector("h3").innerText;
 
-    if(button.className.includes("small")){
-
-        name = clickedPanel.querySelector("h3").innerText + " (мала)";
-        size = clickedPanel.querySelector(".small-size").innerText;
-        weight = clickedPanel.querySelector(".small-weight").innerText;
-        price = clickedPanel.querySelector(".small-pizza-price").innerText;
-    }
-    else if(button.className.includes("big")){
-        name = clickedPanel.querySelector("h3").innerText + " (велика)";
+    if(button.className.includes("big")){
+        clickedPizzaName += " (велика)";
+        weightPer1 = clickedPanel.querySelector('.big-weight').innerText;
+        pricePer1 = clickedPanel.querySelector('.big-pizza-price').innerText;
         size = clickedPanel.querySelector(".big-size").innerText;
-        weight = clickedPanel.querySelector(".big-weight").innerText;
-        price = clickedPanel.querySelector(".big-pizza-price").innerText;
-
     }
-    createOrderPanel(name, image, size, weight, price, price, weight);
+    else if(button.className.includes("small")){
+        clickedPizzaName += " (мала)";
+        weightPer1 = clickedPanel.querySelector('.small-weight').innerText;
+        pricePer1 = clickedPanel.querySelector('.small-pizza-price').innerText;
+        size = clickedPanel.querySelector(".small-size").innerText;
+    }
+
+    let ordersCollection = document.querySelectorAll('.order-wrapper');
+
+    if(ordersCollection.length != 0){
+
+        let isPresent = false;
+        for(let order of ordersCollection){
+            let orderName = order.querySelector('.order-name').innerText;
+            if(clickedPizzaName === orderName){
+                isPresent=true;
+                increase(order, pricePer1, weightPer1);
+            }
+        }
+        if(isPresent == false){ 
+            createOrderPanel(clickedPizzaName, image, size, weightPer1, pricePer1);
+        }
+    }
+    else{
+        createOrderPanel(clickedPizzaName, image, size, weightPer1, pricePer1);
+    }
 }
 
 
@@ -342,7 +368,7 @@ function filterMenu(event){
             }
         }
         else if(filter == "all"){
-            initializeMenu();
+            initializeSite();
         }
         else{
             for(let pizza of pizzaCollection){
@@ -402,6 +428,9 @@ function setPizzaPanelInfo(pizza){
 // Збільшує ціну, вагу за к-сть піц
 function increase(orderDiv, pricePerOne, weightPerOne){
 
+    let minus = orderDiv.querySelector('.minus');
+    minus.style.display = 'inline-block';
+
     let pizzasAmount = orderDiv.querySelector(".amount");
     let pizzasPrice = orderDiv.querySelector(".price");
     let pizzasWeight = orderDiv.querySelector(".grams");
@@ -422,17 +451,23 @@ function increase(orderDiv, pricePerOne, weightPerOne){
 // Збільшує ціну, вагу за к-сть піц
 function decrease(orderDiv, pricePerOne, weightPerOne){
 
+    let minus = orderDiv.querySelector('.minus');
+    
     let pizzasAmount = orderDiv.querySelector(".amount");
     let pizzasPrice = orderDiv.querySelector(".price");
     let pizzasWeight = orderDiv.querySelector(".grams");
 
     let currentAmount = parseInt(pizzasAmount.innerText, 10);
     let currentPrice = parseInt(price.innerText, 10); 
-    let currentWeight = parseInt(pizzasWeight.innerText, 10);     
+    let currentWeight = parseInt(pizzasWeight.innerText, 10);    
 
+    if(currentAmount-1==1){
+        minus.style.display = 'none';
+    }
     currentAmount -= 1; 
     currentPrice = pricePerOne * currentAmount;
     currentWeight = weightPerOne * currentAmount;
+
     
     pizzasAmount.innerText = currentAmount.toString(); 
     pizzasPrice.innerText = currentPrice.toString();

@@ -33,6 +33,7 @@ h3{
 
 .description{
     word-wrap: break-word;
+    font-size: 20px;
 }
 
 #basket{
@@ -66,8 +67,7 @@ h3{
 }
 
 #cancel {
-    margin-left: 1.5vw;
-    font-size: 2rem;
+    font-size: 2.5rem;
     letter-spacing: 2px;
     color: gray;
     display: inline-block;
@@ -213,6 +213,11 @@ h3{
     padding: 0 1rem;
 }
 
+#price-icon{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
 .filters{
     display: inline;
     color: orange;
@@ -243,6 +248,7 @@ h3{
 }
 
 .col-3{
+    display: grid;
     margin-top: 1vh;
 }
 
