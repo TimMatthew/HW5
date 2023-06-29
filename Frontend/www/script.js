@@ -285,11 +285,12 @@ function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
 
     plus.addEventListener("click", function() {
         increase(orderDiv, pricePerOne, weightPerOne);
+        updateArray(orderDiv);
     });
 
     minus.addEventListener("click", function() {
         decrease(orderDiv, pricePerOne, weightPerOne);
-        // ordersArray.pop(ordersDiv);
+        updateArray(orderDiv);
     });
 
     deleteButton.addEventListener("click", function() {
@@ -305,17 +306,25 @@ function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
 
 function updateArray(orderDiv) {
     if(ordersArray.length == 0){
-        ordersArray.push(ordersDiv);
+        ordersArray.push(orderDiv);
     }
     else{
-        let orderDivName = orderDiv.querySelector("order-name").innerText;
+
+        let orderDivName = orderDiv.querySelector(".order-name").innerText;
+        let isPresent=false;
+
         for(let orderObj of ordersArray){
             let objectName = orderObj.querySelector(".order-name").innerText;
             let objectAmount;
                 if(orderDivName === objectName){
+                    isPresent=true;
                     objectAmount = orderObj.querySelector(".amount").innerText;
-                    // objectAmount = 
+                    objectAmount = parseInt(objectAmount, 10);
+                    orderObj.querySelector(".amount").innerText = objectAmount;
                 }
+        }
+        if(!isPresent){
+            ordersArray.push(orderDiv);
         }
     }
     console.log(ordersArray);
