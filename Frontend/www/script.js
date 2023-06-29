@@ -1,7 +1,7 @@
 import pizzaCollection from './pizzaCollection.json' assert {type: "json"};
 
 // (!!!) - ПРИКРІПИТИ LOCAL STORAGE
-// (!!!) - ОНОВЛЮВАТИ ЗАГАЛЬНУ СУМУ
+// (!!!) - ПОРІШАТИ З РОЗМІРАМИ МЕНЮ
 initializeSite();
 
 // Налаштовує стартові умови сторінки. Задає дані про піци в меню, 
@@ -291,6 +291,7 @@ function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
 
     let ordersDiv = document.querySelector('#orders');
     ordersDiv.appendChild(orderDiv);
+
 }
 
 
@@ -332,18 +333,21 @@ function orderPizza(e){
         }
         if(isPresent == false){ 
             createOrderPanel(clickedPizzaName, image, size, weightPer1, pricePer1);
+            updateTotal(pricePer1);
         }
     }
     else{
         createOrderPanel(clickedPizzaName, image, size, weightPer1, pricePer1);
+        updateTotal(pricePer1);
     }
+
 }
 
 
 // Оновлює меню під впливом фільтру
 function filterMenu(event){
 
-    event.preventDefault();
+    // event.preventDefault();
     let filter = event.target.id;
     console.log(filter);
 
@@ -446,6 +450,8 @@ function increase(orderDiv, pricePerOne, weightPerOne){
     pizzasAmount.innerText = currentAmount.toString(); 
     pizzasPrice.innerText = currentPrice.toString();
     pizzasWeight.innerText = currentWeight.toString();
+
+    updateTotal(pricePerOne, false);
 }
 
 // Збільшує ціну, вагу за к-сть піц
@@ -472,8 +478,23 @@ function decrease(orderDiv, pricePerOne, weightPerOne){
     pizzasAmount.innerText = currentAmount.toString(); 
     pizzasPrice.innerText = currentPrice.toString();
     pizzasWeight.innerText = currentWeight.toString();
+
+    updateTotal(pricePerOne, true);
+}
+
+function updateTotal(priceChange, isSubtract) {
+    let totalPriceElem = document.querySelector("#price");
+    let totalPrice = parseInt(totalPriceElem.innerText, 10);
+    priceChange = parseInt(priceChange, 10);
+
+    if(isSubtract) totalPrice -= priceChange;
+    else totalPrice += priceChange;
+
+    totalPriceElem.innerText = totalPrice.toString()+" грн";
 }
 
 function removeOrder(orderDiv){
+    let orderPrice = orderDiv.querySelector(".price").innerText;
     orderDiv.remove();
+    updateTotal(orderPrice, true);
 }
