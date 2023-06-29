@@ -2,8 +2,8 @@ import pizzaCollection from './pizzaCollection.json' assert {type: "json"};
 
 // (!!!) - ПРИКРІПИТИ LOCAL STORAGE
 // (?) - ПОРІШАТИ З РОЗМІРАМИ МЕНЮ
-var ordersArray = new Array();
 
+var orderArray = new Array();
 
 initializeSite();
 
@@ -17,6 +17,8 @@ function initializeSite(){
         ordersPanel.innerHTML = '';
         let totalPrice = document.querySelector("#price").innerHTML.replace("грн", "");
         updateTotal(totalPrice, true);
+        orderArray.length = 0;
+        console.log(orderArray);
     });
 
     for(let pizza of pizzaCollection) {
@@ -283,51 +285,43 @@ function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
     orderDiv.querySelector('.minus').replaceWith(minus);
     orderDiv.querySelector('.delete').replaceWith(deleteButton);
 
+    let orderObj = {
+        title: name,
+        diameter: size,
+        grams: weightPerOne,
+        cost: pricePerOne,
+        quant: `1`,
+        icon: image
+    }
+
     plus.addEventListener("click", function() {
-        increase(orderDiv, pricePerOne, weightPerOne);
-        updateArray(orderDiv);
+        increase(orderDiv, pricePerOne, weightPerOne, orderObj);
     });
 
     minus.addEventListener("click", function() {
-        decrease(orderDiv, pricePerOne, weightPerOne);
-        updateArray(orderDiv);
+        decrease(orderDiv, pricePerOne, weightPerOne, orderObj);
     });
 
     deleteButton.addEventListener("click", function() {
-        ordersArray.pop(ordersDiv);
-        removeOrder(orderDiv);
+        removeOrder(orderDiv, orderObj);
     });
 
     let ordersDiv = document.querySelector('#orders');
     ordersDiv.appendChild(orderDiv);
 
-    updateArray(orderDiv);
+    orderArray.push(orderObj);
+    console.log(orderArray);
 }
 
-function updateArray(orderDiv) {
-    if(ordersArray.length == 0){
-        ordersArray.push(orderDiv);
-    }
-    else{
-
-        let orderDivName = orderDiv.querySelector(".order-name").innerText;
-        let isPresent=false;
-
-        for(let orderObj of ordersArray){
-            let objectName = orderObj.querySelector(".order-name").innerText;
-            let objectAmount;
-                if(orderDivName === objectName){
-                    isPresent=true;
-                    objectAmount = orderObj.querySelector(".amount").innerText;
-                    objectAmount = parseInt(objectAmount, 10);
-                    orderObj.querySelector(".amount").innerText = objectAmount;
-                }
-        }
-        if(!isPresent){
-            ordersArray.push(orderDiv);
+function updateArray(pizzasAmount, pizzaPrice, pizzaWeight, orderObj){
+    for(let arrayObj of orderArray){
+        if(orderObj.title == arrayObj.title){
+            arrayObj.cost = pizzaPrice;
+            arrayObj.grams = pizzaWeight;
+            arrayObj.quant = pizzasAmount;
         }
     }
-    console.log(ordersArray);
+    console.log(orderArray);
 }
 
 // Задає інфу про замовлення піци
@@ -357,13 +351,21 @@ function orderPizza(e){
     let ordersCollection = document.querySelectorAll('.order-wrapper');
 
     if(ordersCollection.length != 0){
-
         let isPresent = false;
+
         for(let order of ordersCollection){
             let orderName = order.querySelector('.order-name').innerText;
+
             if(clickedPizzaName === orderName){
                 isPresent=true;
-                increase(order, pricePer1, weightPer1);
+
+                let orderObj;
+                for(let order of orderArray){
+                    if(clickedPizzaName === order.title){
+                        orderObj = order;
+                    }
+                }
+                increase(order, pricePer1, weightPer1, orderObj);
             }
         }
         if(isPresent == false){ 
@@ -465,7 +467,7 @@ function setPizzaPanelInfo(pizza){
 }
 
 // Збільшує ціну, вагу за к-сть піц
-function increase(orderDiv, pricePerOne, weightPerOne){
+function increase(orderDiv, pricePerOne, weightPerOne, orderObj){
 
     let minus = orderDiv.querySelector('.minus');
     minus.style.display = 'inline-block';
@@ -487,11 +489,11 @@ function increase(orderDiv, pricePerOne, weightPerOne){
     pizzasWeight.innerText = currentWeight.toString();
 
     updateTotal(pricePerOne, false);
-    console.log(ordersArray);
+    updateArray(pizzasAmount.innerText, pizzasPrice.innerText, pizzasWeight.innerText, orderObj);
 }
 
 // Збільшує ціну, вагу за к-сть піц
-function decrease(orderDiv, pricePerOne, weightPerOne){
+function decrease(orderDiv, pricePerOne, weightPerOne, orderObj){
 
     let minus = orderDiv.querySelector('.minus');
     
@@ -516,7 +518,7 @@ function decrease(orderDiv, pricePerOne, weightPerOne){
     pizzasWeight.innerText = currentWeight.toString();
 
     updateTotal(pricePerOne, true);
-    console.log(ordersArray);
+    updateArray(pizzasAmount.innerText, pizzasPrice.innerText, pizzasWeight.innerText, orderObj);
 }
 
 function updateTotal(priceChange, isSubtract) {
@@ -530,9 +532,10 @@ function updateTotal(priceChange, isSubtract) {
     totalPriceElem.innerText = totalPrice.toString()+" грн";
 }
 
-function removeOrder(orderDiv){
+function removeOrder(orderDiv, orderObj) {
     let orderPrice = orderDiv.querySelector(".price").innerText;
     orderDiv.remove();
     updateTotal(orderPrice, true);
-    console.log(ordersArray);
+    orderArray.pop(orderObj);
+    console.log(orderArray);
 }
