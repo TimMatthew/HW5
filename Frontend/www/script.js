@@ -2,6 +2,9 @@ import pizzaCollection from './pizzaCollection.json' assert {type: "json"};
 
 // (!!!) - ПРИКРІПИТИ LOCAL STORAGE
 // (?) - ПОРІШАТИ З РОЗМІРАМИ МЕНЮ
+var ordersArray = new Array();
+
+
 initializeSite();
 
 // Налаштовує стартові умови сторінки. Задає дані про піци в меню, 
@@ -235,7 +238,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
 }
 
 
-//Створює панель замовлення та ставить в сторінку
+//Створює панель замовлення та ставить y сторінку
 function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
 
     let orderDiv = document.createElement("div");
@@ -286,17 +289,37 @@ function createOrderPanel(name, image, size, weightPerOne, pricePerOne){
 
     minus.addEventListener("click", function() {
         decrease(orderDiv, pricePerOne, weightPerOne);
+        // ordersArray.pop(ordersDiv);
     });
 
     deleteButton.addEventListener("click", function() {
+        // ordersArray.pop(ordersDiv);
         removeOrder(orderDiv);
     });
 
     let ordersDiv = document.querySelector('#orders');
     ordersDiv.appendChild(orderDiv);
 
+    updateArray(orderDiv);
 }
 
+function updateArray(orderDiv) {
+    if(ordersArray.length == 0){
+        ordersArray.push(ordersDiv);
+    }
+    else{
+        let orderDivName = orderDiv.querySelector("order-name").innerText;
+        for(let orderObj of ordersArray){
+            let objectName = orderObj.querySelector(".order-name").innerText;
+            let objectAmount;
+                if(orderDivName === objectName){
+                    objectAmount = orderObj.querySelector(".amount").innerText;
+                    // objectAmount = 
+                }
+        }
+    }
+    console.log(ordersArray);
+}
 
 // Задає інфу про замовлення піци
 function orderPizza(e){
@@ -455,6 +478,7 @@ function increase(orderDiv, pricePerOne, weightPerOne){
     pizzasWeight.innerText = currentWeight.toString();
 
     updateTotal(pricePerOne, false);
+    console.log(ordersArray);
 }
 
 // Збільшує ціну, вагу за к-сть піц
@@ -483,6 +507,7 @@ function decrease(orderDiv, pricePerOne, weightPerOne){
     pizzasWeight.innerText = currentWeight.toString();
 
     updateTotal(pricePerOne, true);
+    console.log(ordersArray);
 }
 
 function updateTotal(priceChange, isSubtract) {
@@ -500,4 +525,5 @@ function removeOrder(orderDiv){
     let orderPrice = orderDiv.querySelector(".price").innerText;
     orderDiv.remove();
     updateTotal(orderPrice, true);
+    console.log(ordersArray);
 }
