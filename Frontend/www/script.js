@@ -109,6 +109,15 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
     bigButton.innerText = "Купити";
     bigButton.addEventListener("click", orderPizza);
 
+    let popularBadge = document.createElement("span");
+    popularBadge.innerText = "Популярна";
+    popularBadge.setAttribute('class', 'popular');
+
+    let newBadge = document.createElement("span");
+    newBadge.innerText = "Нова";
+    newBadge.setAttribute('class', 'new');
+
+
     console.log(smallButton.outerHTML);
     console.log(bigButton.outerHTML);
 
@@ -192,7 +201,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                     <div class="big">
                             <div class="big-info">
                              <div>
-                                <img src="assets\images\size-icon.svg" alt="">
+                                <img src="assets/images/size-icon.svg" alt="">
                                 <span class="big-size">${bigSize}</span>
                             </div>
                             <div>
@@ -231,7 +240,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
                     <div class="small">
                         <div class="small-info">
                             <div>
-                                <img src="assets\images\size-icon.svg" alt="">
+                                <img src="assets/images/size-icon.svg" alt="">
                                 <span class="small-size">${smallSize}</span>
                             </div>
                             <div>
@@ -249,6 +258,14 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
         </div>`;
         divCol6.querySelector("#smallButton").replaceWith(smallButton);
     }
+
+    let badgesDiv = document.createElement("div");
+    badgesDiv.setAttribute("class", "badges");
+
+    if(isPopular) badgesDiv.appendChild(popularBadge);
+    if(isNew) badgesDiv.appendChild(newBadge);
+
+    divCol6.appendChild(badgesDiv);
 
     parentElement.append(divCol6);
 }
