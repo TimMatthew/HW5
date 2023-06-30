@@ -5,6 +5,7 @@ import pizzaCollection from './pizzaCollection.json' assert {type: "json"};
 var orderArray = new Array();
 
 initializeSite();
+
 window.addEventListener('load', function() {
     let testArray = JSON.parse(localStorage.getItem('storedOrders'));
 
@@ -12,10 +13,9 @@ window.addEventListener('load', function() {
         orderArray = testArray;
 
         for(let order of orderArray){
-            uploadedOrderPanel(order.title, order.quant, order.icon, order.diameter, order.grams, order.cost, order.isBig);
+            uploadOrderPanel(order.title, order.quant, order.icon, order.diameter, order.grams, order.cost, order.isBig);
         }
     }
-
 });
 
 // Налаштовує стартові умови сторінки. Задає дані про піци в меню, 
@@ -270,7 +270,7 @@ function createPizzaPanel(title, type, icon, content, smallWeight, smallSize,
     parentElement.append(divCol6);
 }
 
-function uploadedOrderPanel(name, amount, image, size, weight, price, isBig){
+function uploadOrderPanel(name, amount, image, size, weight, price, isBig){
     let orderDiv = document.createElement("div");
     orderDiv.className = "order-wrapper";
 
@@ -563,7 +563,6 @@ function filterMenu(event){
 
     // event.preventDefault();
     let filter = event.target.id;
-    console.log(filter);
 
     let pizzaPanels = document.querySelectorAll(".col-sm-6.col-md-4");
     pizzaPanels.forEach(panel =>{
