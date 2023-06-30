@@ -1,6 +1,5 @@
 import pizzaCollection from './pizzaCollection.json' assert {type: "json"};
 
-// (!!!) - ПРИКРІПИТИ LOCAL STORAGE
 // (?) - ПОРІШАТИ З РОЗМІРАМИ МЕНЮ
 
 var orderArray = new Array();
