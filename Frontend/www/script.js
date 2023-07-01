@@ -14,8 +14,9 @@ window.addEventListener('load', function() {
 
         for(let order of orderArray){
             uploadOrderPanel(order.title, order.quant, order.icon, order.diameter, order.grams, order.cost, order.isBig);
+
             let ordersAmount = document.querySelector("#title-amount");
-            let ordersAmountInt=parseInt(ordersAmount.innerText,10);
+            let ordersAmountInt = parseInt(ordersAmount.innerText,10);
             ordersAmountInt++;
             ordersAmount.innerText = ordersAmountInt.toString();
         }
