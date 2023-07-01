@@ -24,7 +24,7 @@ window.addEventListener('load', function() {
 });
 
 // Налаштовує стартові умови сторінки. Задає дані про піци в меню, 
-// додає події до 'очистити замовлення', 'замовити'
+// додає події до 'очистити замовлення'
 function initializeSite(){
 
     let clearOrders = document.querySelector('#cancel');
