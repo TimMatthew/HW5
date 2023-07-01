@@ -707,7 +707,7 @@ function increase(orderDiv, pricePerOne, weightPerOne, pizzaScale, orderObj){
     updateArray(pizzasAmount.innerText, pizzasPrice.innerText, pizzasWeight.innerText, pizzaScale, orderObj);
 }
 
-// Збільшує ціну, вагу за к-сть піц
+// Зменшує ціну, вагу за к-сть піц
 function decrease(orderDiv, pricePerOne, weightPerOne, pizzaScale, orderObj){
 
     let minus = orderDiv.querySelector('.minus');
