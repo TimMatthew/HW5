@@ -584,8 +584,10 @@ function filterMenu(event){
     });
     let menuCounter = document.querySelector('#pizza-types');
     let menuCounterInt = 0;
-
+    let filterName = document.querySelector("#header p");;
         if(filter == "mushrooms"){
+            filterName.innerText = "З грибами ";
+
             for(let pizza of pizzaCollection){
                 if(pizza.content.hasOwnProperty("mushroom")){
                     setPizzaPanelInfo(pizza);
@@ -594,6 +596,8 @@ function filterMenu(event){
             }
         }
         else if(filter == "pineapple"){
+            filterName.innerText = "З ананасами ";
+
             for(let pizza of pizzaCollection){
                 if(pizza.content.hasOwnProperty("pineapple")){
                     setPizzaPanelInfo(pizza);
@@ -604,16 +608,31 @@ function filterMenu(event){
         else if(filter == "all"){
             initializeSite();
             menuCounterInt=8;
+            filterName.innerText = "Усі піци ";
         }
         else{
             for(let pizza of pizzaCollection){
+
                 if(filter == pizza.type){
                     setPizzaPanelInfo(pizza);
                     menuCounterInt++;
+
+                    switch(pizza.type){
+                        case "М’ясна піца":
+                            filterName.innerText = "М'ясні ";
+                            break;
+                        case "Морська піца":
+                            filterName.innerText = "З морепродуктами ";
+                            break;
+                        case "Вега піца":
+                            filterName.innerText = "Веганські ";
+                            break;
+                    }
                 }
             }
         }
     menuCounter.innerText = menuCounterInt.toString();
+    filterName.appendChild(menuCounter);
 }
 
 // Задає інфу для панелі піци
