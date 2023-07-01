@@ -14,6 +14,10 @@ window.addEventListener('load', function() {
 
         for(let order of orderArray){
             uploadOrderPanel(order.title, order.quant, order.icon, order.diameter, order.grams, order.cost, order.isBig);
+            let ordersAmount = document.querySelector("#title-amount");
+            let ordersAmountInt=parseInt(ordersAmount.innerText,10);
+            ordersAmountInt++;
+            ordersAmount.innerText = ordersAmountInt.toString();
         }
     }
 });
@@ -28,6 +32,11 @@ function initializeSite(){
 
         let ordersPanel = document.querySelector("#orders");
         ordersPanel.innerHTML = '';
+
+        let ordersAmount = document.querySelector("#title-amount");
+        let ordersAmountInt=0;
+
+        ordersAmount.innerText = ordersAmountInt.toString();
         
         let totalPrice = document.querySelector("#price").innerHTML.replace("грн", "");
         updateTotal(totalPrice, true);
@@ -478,6 +487,11 @@ function createOrderPanel(name, image, size, weightPerOne, pricePerOne, isBig){
         removeOrder(orderDiv, orderObj);
     });
 
+    let ordersAmount = document.querySelector("#title-amount");
+    let ordersAmountInt=parseInt(ordersAmount.innerText,10);
+    ordersAmountInt++;
+    ordersAmount.innerText = ordersAmountInt.toString();
+
     let ordersDiv = document.querySelector('#orders');
     ordersDiv.appendChild(orderDiv);
 
@@ -568,12 +582,14 @@ function filterMenu(event){
     pizzaPanels.forEach(panel =>{
         panel.remove();
     });
-
+    let menuCounter = document.querySelector('#pizza-types');
+    let menuCounterInt = 0;
 
         if(filter == "mushrooms"){
             for(let pizza of pizzaCollection){
                 if(pizza.content.hasOwnProperty("mushroom")){
                     setPizzaPanelInfo(pizza);
+                    menuCounterInt++;
                 }
             }
         }
@@ -581,19 +597,23 @@ function filterMenu(event){
             for(let pizza of pizzaCollection){
                 if(pizza.content.hasOwnProperty("pineapple")){
                     setPizzaPanelInfo(pizza);
+                    menuCounterInt++;
                 }
             }
         }
         else if(filter == "all"){
             initializeSite();
+            menuCounterInt=8;
         }
         else{
             for(let pizza of pizzaCollection){
                 if(filter == pizza.type){
                     setPizzaPanelInfo(pizza);
+                    menuCounterInt++;
                 }
             }
         }
+    menuCounter.innerText = menuCounterInt.toString();
 }
 
 // Задає інфу для панелі піци
@@ -715,6 +735,11 @@ function removeOrder(orderDiv, orderObj) {
     orderArray = orderArray.filter(function(order){
         return order.title !== orderObj.title;
     });
-    console.log(orderArray);
+
+    let ordersAmount = document.querySelector("#title-amount");
+    let ordersAmountInt=parseInt(ordersAmount.innerText,10);
+    ordersAmountInt--;
+    ordersAmount.innerText = ordersAmountInt.toString();
+
     localStorage.setItem('storedOrders', JSON.stringify(orderArray));
 }
