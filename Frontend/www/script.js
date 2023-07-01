@@ -575,7 +575,6 @@ function orderPizza(e){
 // Оновлює меню під впливом фільтру
 function filterMenu(event){
 
-    // event.preventDefault();
     let filter = event.target.id;
 
     let pizzaPanels = document.querySelectorAll(".col-sm-6.col-md-4");
